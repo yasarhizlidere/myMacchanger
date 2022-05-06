@@ -1,3 +1,4 @@
+import subprocess
 import optparse
 
 parse_object = optparse.OptionParser()
@@ -13,3 +14,6 @@ user_mac_adress = user_inputs.mac_adress
 print(parse_object.parse_args())
 
 print("MyMacChanger started!!!")
+subprocess.call(["ifconfig",user_interface,"down"])
+subprocess.call(["ifconfig",user_interface,"hw","ether",user_mac_adress])
+subprocess.call(["ifconfig",user_interface,"up"])
